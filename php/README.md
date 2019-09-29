@@ -1,5 +1,11 @@
 # php 7.3
 
+## Build
+```bash
+$ docker build -t guilhermejr/php . -f php.Dockerfile
+```
+
+## Run
 ```bash
 $ docker run -d --name php -p "80:80" -v "$(pwd)/public:/var/www" guilhermejr/php
 ```

@@ -1,5 +1,11 @@
 # php-cli 7.3
 
+## Build
+```bash
+$ docker build -t guilhermejr/php-cli . -f php-cli.Dockerfile
+```
+
+## Run
 ```bash
 $ docker run -it --rm -v "$(pwd):/var/www" guilhermejr/php-cli php index.php
 ```

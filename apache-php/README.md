@@ -1,5 +1,11 @@
 # apache-php 7.3
 
+## Build
+```bash
+$ docker build -t guilhermejr/apache-php . -f apache-php.Dockerfile
+```
+
+## Run
 ```bash
 $ docker run -d --name apache-php -p "80:80" -v "$(pwd):/var/www/html" guilhermejr/apache-php
 ```
