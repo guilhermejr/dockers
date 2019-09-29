@@ -1,13 +1,11 @@
-# php 7.3
+# php-cli 7.3
 
 ```bash
-$ docker run -d --name php -p "80:80" -v "$(pwd)/public:/var/www" guilhermejr/php
+$ docker run -it --rm -v "$(pwd):/var/www" guilhermejr/php-cli php index.php
 ```
 
 * Workdir: /var/www/
-* php target server: public
 * ubuntu: 18.04.1
-* Porta 80
 * php: 7.3.9-1
 * Módulos do php
     * bcmath

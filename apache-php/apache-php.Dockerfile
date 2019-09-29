@@ -1,12 +1,11 @@
 FROM ubuntu:18.04
-MAINTAINER Guilherme Jr.
-# Não perguntar o timezone na instalação do php 7.3
+LABEL maintainer="Guilherme Jr. <falecom@guilhermejr.net>" 
+# Não pergunta o timezone na instalação do php 7.3
 ENV DEBIAN_FRONTEND=noninteractive
 # Aceitar os termos do SQLServer
 ENV ACCEPT_EULA=Y
-
-#COPY . /var/www/html
 WORKDIR /var/www/html
+ENTRYPOINT apachectl -D FOREGROUND
 EXPOSE 80
 RUN \
         apt-get update && \
@@ -27,4 +26,3 @@ RUN \
         phpenmod -v 7.3 sqlsrv pdo_sqlsrv && \
 		a2enmod rewrite
 COPY 000-default.conf /etc/apache2/sites-enabled/000-default.conf
-CMD apachectl -D FOREGROUND
