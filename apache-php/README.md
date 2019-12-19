@@ -1,4 +1,4 @@
-# apache-php 7.3
+# apache-php 7.4
 
 ## Build
 ```bash
@@ -14,7 +14,7 @@ $ docker run -d --name apache-php -p "80:80" -v "$(pwd):/var/www/html" guilherme
 * ubuntu: 18.04.1
 * apache: 2.4.29
 * Porta 80
-* php: 7.3.9-1
+* php: 7.4.1
 * Módulos do php
     * bcmath
     * bz2

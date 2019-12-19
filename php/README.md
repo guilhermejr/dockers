@@ -1,4 +1,4 @@
-# php 7.3
+# php 7.4
 
 ## Build
 ```bash
@@ -7,14 +7,14 @@ $ docker build -t guilhermejr/php . -f php.Dockerfile
 
 ## Run
 ```bash
-$ docker run -d --name php -p "80:80" -v "$(pwd)/public:/var/www" guilhermejr/php
+$ docker run -d --name php -p "80:80" -v "$(pwd):/var/www" guilhermejr/php
 ```
 
 * Workdir: /var/www/
 * php target server: public
 * ubuntu: 18.04.1
 * Porta 80
-* php: 7.3.9-1
+* php: 7.4.1
 * Módulos do php
     * bcmath
     * bz2
