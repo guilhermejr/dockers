@@ -4,7 +4,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 ENV ACCEPT_EULA=Y
 ENV TZ=America/Bahia
 WORKDIR /var/www
-ENTRYPOINT php -S 0.0.0.0:80
+ENTRYPOINT php -S 0.0.0.0:80 -t public
 EXPOSE 80
 RUN \
         apt-get update && \
