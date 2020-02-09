@@ -1,15 +1,18 @@
 #!/bin/bash
 
+# --- Recebe a ação ---
+acao=$1
+
 # --- Recebe o valor da chave ---
-chave=$1
+chave=$2
 
 # --- Recebe o valor ---
-valor=$2
+valor=$3
 
-# --- Ambientes que ser�o modificados ---
+# --- Ambientes que serão modificados ---
 ambientes=( "apache2" "cli");
 
-# --- Vers�o do PHP ---
+# --- Versão do PHP ---
 versao=`php -r "echo substr(PHP_VERSION, 0, 3);"`
 
 i=0;
@@ -22,20 +25,26 @@ do
 	# --- Verifica se o arquivo exisre ---
 	if [ -f $arquivo_phpini ]
 	then
-		if [ -e $valor ]
-   	 	then
-        		# --- Se o valor for vazio desabilita ---
-        		sed -i "/^$chave =.*$/s/^/;/g" $arquivo_phpini
-    		else
-        		# --- Habilita se for válido ---
-        		sed -i "/^;$chave =.*$/s/^;//g" $arquivo_phpini
 
-        		# --- Modifica o valor ---
-        		sed -i "s,^$chave =.*$,$chave = $valor," $arquivo_phpini
-    		fi
+		# --- Adiciona linha no php.ini ---
+		if [ "$acao" =  "add" ]
+		then
+			echo "${chave}=${valor}" >> $arquivo_phpini
+		else 
+			if [ -e $valor ]
+			then
+				# --- Se o valor for vazio desabilita ---
+				sed -i "/^$chave =.*$/s/^/;/g" $arquivo_phpini
+			else
+				# --- Habilita se for válido ---
+				sed -i "/^;$chave =.*$/s/^;//g" $arquivo_phpini
 
+				# --- Modifica o valor ---
+				sed -i "s,^$chave =.*$,$chave = $valor," $arquivo_phpini
+			fi
+		fi
 	else
-    		echo "$arquivo_phpini n�o existe"
+    		echo "$arquivo_phpini não existe"
 	fi
 
         let i++
