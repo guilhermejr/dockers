@@ -1,18 +1,18 @@
-# apache-php 7.4
+# php 7.4
 
 ## Build
 ```bash
-$ docker build -t guilhermejr/apache-php . -f apache-php.Dockerfile
+$ docker build -t guilhermejr/php-dev . -f php-dev.Dockerfile
 ```
 
 ## Run
 ```bash
-$ docker run -d --name apache-php -p "80:80" -v "$(pwd):/var/www/html" guilhermejr/apache-php
+$ docker run -d --name php-dev -p "80:80" -v "$(pwd):/var/www" guilhermejr/php-dev
 ```
 
-* Workdir: /var/www/html
+* Workdir: /var/www/
+* php target server: public
 * ubuntu: 18.04.1
-* apache: 2.4.29
 * Porta 80
 * php: 7.4.2
 * Módulos do php

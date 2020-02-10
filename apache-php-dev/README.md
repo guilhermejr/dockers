@@ -2,12 +2,12 @@
 
 ## Build
 ```bash
-$ docker build -t guilhermejr/apache-php . -f apache-php.Dockerfile
+$ docker build -t guilhermejr/apache-php-dev . -f apache-php-dev.Dockerfile
 ```
 
 ## Run
 ```bash
-$ docker run -d --name apache-php -p "80:80" -v "$(pwd):/var/www/html" guilhermejr/apache-php
+$ docker run -d --name apache-php-dev -p "80:80" -v "$(pwd):/var/www/html" guilhermejr/apache-php-dev
 ```
 
 * Workdir: /var/www/html

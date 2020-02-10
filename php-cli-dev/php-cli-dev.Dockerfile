@@ -4,8 +4,6 @@ ENV DEBIAN_FRONTEND=noninteractive
 ENV ACCEPT_EULA=Y
 ENV TZ=America/Bahia
 WORKDIR /var/www
-ENTRYPOINT php -S 0.0.0.0:80 -t public
-EXPOSE 80
 RUN \
         apt-get update && \
         apt-get install -y software-properties-common apt-utils unzip vim && \
@@ -18,6 +16,7 @@ RUN \
         apt-get install -y msodbcsql17 && \
         apt-get install -y mssql-tools && \
         apt-get install unixodbc-dev && \
+        pecl install xdebug && \
         pecl install sqlsrv-5.8.0 && \
         pecl install pdo_sqlsrv-5.8.0 && \
         printf "; priority=20\nextension=sqlsrv.so\n" > /etc/php/7.4/mods-available/sqlsrv.ini && \
@@ -26,8 +25,8 @@ RUN \
 ADD https://raw.githubusercontent.com/guilhermejr/dockers/master/phpini.sh /bin/phpini
 RUN \
         chmod 755 /bin/phpini && \
-        phpini display_errors Off  && \
-        phpini error_reporting "E_ALL & ~E_NOTICE & ~E_STRICT & ~E_DEPRECATED"  && \
-        phpini date.timezone America/Bahia
-
-
+        phpini add zend_extension /usr/lib/php/20190902/xdebug.so && \
+        phpini set display_errors On && \
+        phpini set error_reporting E_ALL && \
+        phpini set date.timezone America/Bahia
+		

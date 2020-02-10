@@ -16,9 +16,15 @@ RUN \
         apt-get install -y msodbcsql17 && \
         apt-get install -y mssql-tools && \
         apt-get install unixodbc-dev && \
-        pecl install sqlsrv-5.7.1preview && \
-        pecl install pdo_sqlsrv-5.7.1preview && \
+        pecl install sqlsrv-5.8.0 && \
+        pecl install pdo_sqlsrv-5.8.0 && \
         printf "; priority=20\nextension=sqlsrv.so\n" > /etc/php/7.4/mods-available/sqlsrv.ini && \
         printf "; priority=30\nextension=pdo_sqlsrv.so\n" > /etc/php/7.4/mods-available/pdo_sqlsrv.ini && \
         phpenmod -v 7.4 sqlsrv pdo_sqlsrv 
+ADD https://raw.githubusercontent.com/guilhermejr/dockers/master/phpini.sh /bin/phpini
+RUN \
+        chmod 755 /bin/phpini && \
+        phpini display_errors Off  && \
+        phpini error_reporting "E_ALL & ~E_NOTICE & ~E_STRICT & ~E_DEPRECATED"  && \
+        phpini date.timezone America/Bahia
 		

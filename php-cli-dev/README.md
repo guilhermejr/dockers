@@ -1,19 +1,17 @@
-# apache-php 7.4
+# php-cli 7.4
 
 ## Build
 ```bash
-$ docker build -t guilhermejr/apache-php . -f apache-php.Dockerfile
+$ docker build -t guilhermejr/php-cli-dev . -f php-cli-dev.Dockerfile
 ```
 
 ## Run
 ```bash
-$ docker run -d --name apache-php -p "80:80" -v "$(pwd):/var/www/html" guilhermejr/apache-php
+$ docker run -it --rm -v "$(pwd):/var/www" guilhermejr/php-cli-dev php index.php
 ```
 
-* Workdir: /var/www/html
+* Workdir: /var/www/
 * ubuntu: 18.04.1
-* apache: 2.4.29
-* Porta 80
 * php: 7.4.2
 * Módulos do php
     * bcmath

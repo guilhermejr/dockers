@@ -12,7 +12,7 @@ $ docker run -it --rm -v "$(pwd):/var/www" guilhermejr/php-cli php index.php
 
 * Workdir: /var/www/
 * ubuntu: 18.04.1
-* php: 7.4.1
+* php: 7.4.2
 * Módulos do php
     * bcmath
     * bz2
