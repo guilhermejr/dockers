@@ -1,18 +1,21 @@
-# php-cli 7.4
+# php 7.4
 
 ## Build
 ```bash
-$ docker build -t guilhermejr/php-cli-dev . -f php-cli-dev.Dockerfile
+$ docker build -t guilhermejr/laravel-dev . -f laravel-dev.Dockerfile
 ```
 
 ## Run
 ```bash
-$ docker run -it --rm -v "$(pwd):/var/www" guilhermejr/php-cli-dev php index.php
+$ docker run -d --name laravel-dev -p "80:80" -v "$(pwd):/var/www" guilhermejr/laravel-dev
 ```
 
 * Workdir: /var/www/
+* php target server: public
 * ubuntu: 18.04.3
+* Porta 80
 * php: 7.4.4
+* node: 10.19.0
 * Módulos do php
     * bcmath
     * bz2

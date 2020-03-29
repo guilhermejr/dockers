@@ -11,10 +11,10 @@ $ docker run -d --name apache-php -p "80:80" -v "$(pwd):/var/www/html" guilherme
 ```
 
 * Workdir: /var/www/html
-* ubuntu: 18.04.1
+* ubuntu: 18.04.3
 * apache: 2.4.29
 * Porta 80
-* php: 7.4.2
+* php: 7.4.4
 * Módulos do php
     * bcmath
     * bz2
