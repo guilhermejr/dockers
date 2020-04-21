@@ -14,7 +14,7 @@ $ docker run -d --name php-dev -p "80:80" -v "$(pwd):/var/www" guilhermejr/php-d
 * php target server: public
 * ubuntu: 18.04.3
 * Porta 80
-* php: 7.4.4
+* php: 7.4.5
 * Módulos do php
     * bcmath
     * bz2

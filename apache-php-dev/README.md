@@ -14,7 +14,7 @@ $ docker run -d --name apache-php-dev -p "80:80" -v "$(pwd):/var/www/html" guilh
 * ubuntu: 18.04.3
 * apache: 2.4.29
 * Porta 80
-* php: 7.4.4
+* php: 7.4.5
 * Módulos do php
     * bcmath
     * bz2

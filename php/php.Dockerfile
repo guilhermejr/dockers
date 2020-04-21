@@ -7,6 +7,7 @@ WORKDIR /var/www
 ENTRYPOINT php -S 0.0.0.0:80 -t public
 EXPOSE 80
 RUN \
+        export http_proxy=http://cacher:3142 && \
         apt-get update && \
         apt-get install -y software-properties-common apt-utils unzip vim && \
         add-apt-repository ppa:ondrej/php -y && \
@@ -14,10 +15,13 @@ RUN \
         apt-get install composer php7.4-ldap php7.4-readline php7.4-soap php7.4-json php7.4-bcmath php7.4-curl php7.4 php7.4-dev php7.4-xml php7.4-bz2 php7.4-cli php7.4-curl php7.4-gd php7.4-intl php7.4-mbstring php7.4-pgsql php7.4-sqlite3 php7.4-xmlrpc php7.4-zip php7.4-mysql -y --allow-unauthenticated && \
         curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add - && \
         curl https://packages.microsoft.com/config/ubuntu/18.04/prod.list > /etc/apt/sources.list.d/mssql-release.list && \
+        export https_proxy=http://cacher:3142 && \
         apt-get update && \
         apt-get install -y msodbcsql17 && \
         apt-get install -y mssql-tools && \
         apt-get install unixodbc-dev && \
+        export http_proxy="" && \
+        export https_proxy="" && \
         pecl install sqlsrv-5.8.0 && \
         pecl install pdo_sqlsrv-5.8.0 && \
         printf "; priority=20\nextension=sqlsrv.so\n" > /etc/php/7.4/mods-available/sqlsrv.ini && \
