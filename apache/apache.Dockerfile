@@ -8,6 +8,6 @@ ENTRYPOINT apachectl -D FOREGROUND
 EXPOSE 80 443
 RUN \
         apt-get update && \
-        apt-get install -y software-properties-common apt-utils unzip vim certbot python3-certbot-apache && \
-	a2enmod rewrite && \
-        a2enmod ssl
+        apt-get install -y software-properties-common apt-utils unzip vim apache2 certbot python3-certbot-apache && \
+	a2enmod rewrite ssl proxy proxy_http && \
+        service apache2 restart
